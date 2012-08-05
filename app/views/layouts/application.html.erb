@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>In2App</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <head>
+    <title>Ruby on Rails Tutorial Sample App | <%= yield(:title) %></title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
   
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+  </body>
 </html>
