@@ -4,6 +4,29 @@ describe "User pages" do
 
   subject { page }
   
+  describe "index" do
+
+    let(:user) { FactoryGirl.create(:user) }
+
+    before(:all) { 10.times { FactoryGirl.create(:user) } }
+    after(:all)  { User.delete_all }
+
+    before(:each) do
+      sign_in user
+      visit users_path
+    end
+
+    it { should have_selector('title', :text => 'All users') }
+    it { should have_selector('h1',    :text => 'All users') }
+
+    describe "pagination" do
+
+      it { should have_selector('div.pagination') }
+
+      
+    end
+  end
+  
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
     before { visit user_path(user) }
