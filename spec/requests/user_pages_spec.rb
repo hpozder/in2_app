@@ -16,8 +16,8 @@ describe "User pages" do
       visit users_path
     end
 
-    it { should have_selector('title', :text => 'All users') }
-    it { should have_selector('h1',    :text => 'All users') }
+    it { should have_selector('title', :text => 'All Users') }
+    it { should have_selector('h1',    :text => 'All Users') }
 
     describe "pagination" do
 
@@ -58,15 +58,15 @@ describe "User pages" do
   describe "signup page" do
     before { visit signup_path }
 
-    it { should have_selector('h1',    :text => 'Sign up') }
-    it { should have_selector('title', :text => full_title('Sign up')) }
+    it { should have_selector('h1',    :text => 'Create User') }
+    it { should have_selector('title', :text => full_title('Create User')) }
   end
   
   describe "signup" do
 
     before { visit signup_path }
 
-    let(:submit) { "Create my account" }
+    let(:submit) { "Create new account" }
 
     describe "with invalid information" do
       it "should not create a user" do
