@@ -56,15 +56,22 @@ describe "User pages" do
   end
 
   describe "signup page" do
-    before { visit signup_path }
+    let(:admin) { FactoryGirl.create(:admin) }
+        before do
+          sign_in admin
+          visit signup_path
+        end
 
     it { should have_selector('h1',    :text => 'Create User') }
     it { should have_selector('title', :text => full_title('Create User')) }
   end
   
   describe "signup" do
-
-    before { visit signup_path }
+    let(:admin) { FactoryGirl.create(:admin) }
+	    before do
+          sign_in admin
+          visit signup_path
+        end
 
     let(:submit) { "Create new account" }
 

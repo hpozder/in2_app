@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   
-  before_filter :signed_in_user, :only => [:index, :edit, :update, :destroy]
+  before_filter :signed_in_user, :only => [:index, :edit, :update, :destroy, :new]
   before_filter :correct_user,   :only => [:edit, :update]
-  before_filter :admin_user,     :only => :destroy
+  before_filter :admin_user,     :only => [:destroy, :new, :create]
   
   def index
     @users = User.paginate(:page => params[:page], :per_page => 10, :order => 'name ASC')
@@ -57,11 +57,17 @@ class UsersController < ApplicationController
 	
 	def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      unless current_user?(@user)
+	    flash[:error] = "You don't have permission to access this page."
+	    redirect_to root_path
+	  end
     end
 	
 	def admin_user
-      redirect_to(root_path) unless current_user.admin?
+      unless current_user.admin?
+	    flash[:error] = "You don't have permission to access this page."
+	    redirect_to root_path
+	  end
     end
   
 end
