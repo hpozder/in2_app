@@ -7,10 +7,10 @@
       <%= render "shared/error_messages" %>
 
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :readonly => true %>
 
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :readonly => true %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>
